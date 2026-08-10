@@ -2,8 +2,8 @@
 
 ### Container specifications
 
-**CPU:** 1
+**CPU:** 2
 <br>
-**RAM:** 512MB
+**RAM:** 1GB
 <br>
-**Storage:** 50GB
+**Storage:** 10GB
