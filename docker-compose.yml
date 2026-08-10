@@ -1,0 +1,31 @@
+services:
+  vaultwarden:
+    container_name: vaultwarden
+    image: vaultwarden/server:latest
+    env_file:
+      - .env
+    restart: unless-stopped
+    environment:
+      - DOMAIN=${DOMAIN}
+    volumes:
+      - ./vw-data/:/data/
+    networks:
+      - tunnel-net
+    ports:
+      - 8080:80
+
+  tunnel:
+    container_name: cloudflare_tunnel
+    image: cloudflare/cloudflared:latest
+    env_file:
+      - .env
+    restart: always
+    command: tunnel --no-autoupdate run --token ${CLOUDFLARE_TOKEN}
+    networks:
+      - tunnel-net
+    depends_on:
+      - vaultwarden
+
+networks:
+  tunnel-net:
+    driver: bridge
