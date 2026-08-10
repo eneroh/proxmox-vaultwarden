@@ -12,3 +12,5 @@
 1. .env file, which details cloudflare token and domain
 2. Docker
 3. Cloudflare account (free), for cloudflare tunnel access
+
+## Procedure
